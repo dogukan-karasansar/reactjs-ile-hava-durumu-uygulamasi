@@ -8,9 +8,29 @@
 
 :root {
   --font-weight: 300;
+  --primary-color: #13131A;
+  --secondary-color: #3B3B54;
+  --third-color: #16161F;
+  --fourth-color: #1E1E29;
 }
 
+@media only screen and (max-width: 620px) {
+  body {
+    background: var(--primary-color) !important;
+    background-image: url('../public/images/Background.svg') !important;
+    background-repeat: no-repeat !important;
+    background-size: auto !important;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--font-weight);
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
 body {
+  background: var(--primary-color);
   margin: 0;
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
