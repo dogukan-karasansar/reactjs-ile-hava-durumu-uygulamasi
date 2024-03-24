@@ -1,12 +1,9 @@
 import './App.css';
 import Base from './layouts/base';
+import MainRouters from './router';
 
 function App() {
-  return (
-    <Base>
-      <h1>Weather App</h1>
-    </Base>
-  );
+  return <MainRouters />
 }
 
 export default App;

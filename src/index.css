@@ -14,11 +14,11 @@
   --fourth-color: #1E1E29;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 720px) {
   body {
     background: var(--primary-color) !important;
     background-image: url('../public/images/Background.svg') !important;
-    background-repeat: no-repeat !important;
+    background-repeat:no-repeat !important;
     background-size: auto !important;
     margin: 0;
     font-family: "Nunito", sans-serif;
