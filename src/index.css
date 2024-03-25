@@ -12,6 +12,8 @@
   --secondary-color: #3B3B54;
   --third-color: #16161F;
   --fourth-color: #1E1E29;
+  --fifth-color: #8FB2F5;
+  --sixth-color: #BFBFD4;
 }
 
 @media only screen and (max-width: 720px) {
