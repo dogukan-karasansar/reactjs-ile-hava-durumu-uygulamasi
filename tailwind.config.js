@@ -12,6 +12,7 @@ module.exports = {
         fourth: "var(--fourth-color)",
         fifth: "var(--fifth-color)",
         sixth: "var(--sixth-color)",
+        seventh: "var(--seventh-color)",
       }
     },
   },
