@@ -24,10 +24,6 @@ export function Weather() {
       background: `url(${weather.banner})`,
       backgroundSize: "cover",
     },
-    icon: {
-      background: `url(${weather.icon})`,
-      backgroundSize: "cover",
-    },
   });
 
   return (
