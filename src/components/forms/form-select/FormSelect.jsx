@@ -22,20 +22,19 @@ const customStyles = {
     borderRadius: "0.375rem",
     fontSize: "15px",
     fontFamily: "nunito",
+    boxShadow: "none",
     ":hover": {
-      backgroundColor: "var(--third-color)",
-    },
-    ":active": {
       backgroundColor: "var(--third-color)",
     },
     zIndex: 1,
     padding: "0.75rem",
-    marginTop: "0.25rem",
+    marginTop: "0.09rem",
   }),
   menu: (styles) => ({
     ...styles,
     backgroundColor: "transparent",
     zIndex: 1,
+    padding: 1,
     margin: 0,
     color: "white",
   }),
