@@ -1,4 +1,4 @@
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
 import "./FormSelect.css";
 
 const customStyles = {

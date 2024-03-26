@@ -10,7 +10,7 @@ const MainRouters = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/weather/:country/:city" element={<Weather />} />
+        <Route path="/weather" element={<Weather />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
