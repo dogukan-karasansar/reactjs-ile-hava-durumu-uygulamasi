@@ -13,6 +13,7 @@ module.exports = {
         fifth: "var(--fifth-color)",
         sixth: "var(--sixth-color)",
         seventh: "var(--seventh-color)",
+        eighth: "var(--eighth-color)",
       },
     },
   },
