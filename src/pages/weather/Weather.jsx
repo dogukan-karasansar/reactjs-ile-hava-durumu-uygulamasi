@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Base from "../../layouts/base";
 import { Card } from "../../components/weather/card/Card";
 import { Information } from "../../components/weather/information/Information";

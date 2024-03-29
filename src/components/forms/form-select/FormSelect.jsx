@@ -51,11 +51,6 @@ const customStyles = {
   }),
 };
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-];
-
 export const FormSelect = ({ ...props }) => {
   return (
     <Select
@@ -65,7 +60,7 @@ export const FormSelect = ({ ...props }) => {
         DropdownIndicator: () => null,
         IndicatorSeparator: () => null,
       }}
-      options={options}
+      options={props.options || []}
       {...props}
     />
   );
