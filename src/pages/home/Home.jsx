@@ -3,19 +3,18 @@ import { Title } from "../../components/title/Title";
 import { FormSelect } from "../../components/forms/form-select/FormSelect";
 import { Button } from "../../components/forms/button/Button";
 import { Header } from "../../components/header/header";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCityJsonData } from "../../store/actions/weather.action";
-import { useEffect, useMemo, useState } from "react";
+
+import { useFetchCities } from "../../hooks/fetch.cities";
 
 export function Home() {
-  const dispatch = useDispatch();
-  const [search, setSearch] = useState("");
-  const [isShow, setIsShow] = useState(false);
-  const { weather } = useSelector((state) => state.weather);
-
-  useEffect(() => {
-    dispatch(fetchCityJsonData(search));
-  }, [search]);
+  const {
+    search,
+    setSearch,
+    cityJsonData,
+    cities,
+    handleShow,
+    handleSetCities,
+  } = useFetchCities();
 
   return (
     <Base>
@@ -25,12 +24,15 @@ export function Home() {
         <FormSelect
           isMulti={true}
           isLoading={true}
-          isClearable={true}
           isSearchable={true}
-          options={weather}
-          onChange={(e) => setSearch(e.target.value)}
+          value={cities}
+          options={cityJsonData ?? []}
+          onInputChange={(e) => setSearch(e)}
+          onChange={(e) => handleSetCities(e)}
         />
-        <Button title={"Search"} />
+
+
+        <Button title={"Search"} isShow={handleShow} />
       </div>
     </Base>
   );

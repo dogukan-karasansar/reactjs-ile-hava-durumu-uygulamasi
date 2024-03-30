@@ -1,4 +1,4 @@
-import Select from "react-select";
+import AsyncSelect from "react-select";
 import "./FormSelect.css";
 
 const customStyles = {
@@ -49,11 +49,31 @@ const customStyles = {
     fontSize: "15px",
     fontFamily: "nunito",
   }),
+  multiValue: (styles, { data }) => {
+    return {
+      ...styles,
+      backgroundColor: "var(--secondary-color)",
+    };
+  },
+  multiValueLabel: (styles, { data }) => ({
+    ...styles,
+    color: "white",
+  }),
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    color: "white",
+    ":hover": {
+      backgroundColor: "var(--third-color)",
+      color: "white",
+    },
+  }),
 };
 
 export const FormSelect = ({ ...props }) => {
   return (
-    <Select
+    <AsyncSelect
+      cacheOptions
+      defaultOptions
       placeholder={<div>{props.placeholder ?? "Seach location"}</div>}
       styles={customStyles}
       components={{

@@ -23,3 +23,18 @@ export const errorMessageHandle = (error) => {
       break;
   }
 };
+
+export const selectOptionsFormatter = async (data) => {
+  if (data.length < 1) return [];
+
+  const options = await Promise.all(
+    data.map(async (item) => {
+      return {
+        value: item.name,
+        label: item.name + ", " + item.country,
+      };
+    })
+  );
+
+  return options;
+};
