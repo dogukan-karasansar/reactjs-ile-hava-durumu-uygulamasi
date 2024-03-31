@@ -21,7 +21,13 @@ export const fetchWeather = (city) => {
           `/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
       );
 
-      response.data.five_day_forecast = forecast.data.list
+      response.data.five_day_forecast = forecast.data.list;
+      response.data.propable_rain = response.data?.hasOwnProperty("rain")
+        ? response.data?.rain["1h"]
+        : 0;
+      response.data.uvi = response.data?.hasOwnProperty("uvi")
+        ? response.data?.uvi
+        : 0;
 
       dispatch({
         type: Constants.GET_WEATHER,
@@ -83,5 +89,11 @@ export const setCities = (cities = []) => {
   return {
     type: Constants.SET_CITIES,
     payload: cities,
+  };
+};
+
+export const clearItems = () => {
+  return {
+    type: Constants.CLEAR_ITEMS,
   };
 };

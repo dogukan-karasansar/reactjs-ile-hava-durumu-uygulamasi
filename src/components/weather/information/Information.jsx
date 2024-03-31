@@ -13,7 +13,9 @@ const renderList = (detail) => {
           />
         </div>
         <div className="flex-1 min-w-0 ms-4">
-          <p className="text-sm font-medium text-sixth truncat">{detail.label}</p>
+          <p className="text-sm font-medium text-sixth truncat">
+            {detail.label}
+          </p>
         </div>
         <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
           {detail.value}
@@ -27,6 +29,7 @@ export const Information = ({ weather }) => {
   const [weatherDetails, setDetails] = useState([]);
 
   useEffect(() => {
+    console.log(weather);
     var details = [
       {
         key: "termal_sensation",
@@ -35,7 +38,7 @@ export const Information = ({ weather }) => {
       },
       {
         key: "propable_rain",
-        value: "80%",
+        value: weather?.propable_rain + "%",
         label: "Probability of rain",
       },
       {
@@ -45,12 +48,12 @@ export const Information = ({ weather }) => {
       },
       {
         key: "air_humidity",
-        value: "80%",
+        value: weather?.main.humidity + "%",
         label: "Air humidity",
       },
       {
         key: "uv_index",
-        value: "5",
+        value: weather?.uvi,
         label: "UV index",
       },
     ];

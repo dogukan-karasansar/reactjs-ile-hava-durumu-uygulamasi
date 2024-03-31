@@ -16,6 +16,11 @@ export const useFetchWeathers = () => {
     });
   };
 
+  const clearItems = () => {
+    dispatch({ type: "CLEAR_ITEMS" });
+    setAllWeathers([]);
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -37,5 +42,6 @@ export const useFetchWeathers = () => {
 
   return {
     allWeathers,
+    clearItems,
   };
 };

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/forms/button/Button";
 
 export function Weather() {
-  const { allWeathers } = useFetchWeathers();
+  const { allWeathers, clearItems } = useFetchWeathers();
   const navigate = useNavigate();
 
   const styles = (weather) => ({
@@ -23,7 +23,8 @@ export function Weather() {
       <div className="h-5 m-5">
         <button
           onClick={() => {
-            window.history.back();
+            clearItems();
+            navigate("/");
           }}
           className="bg-secondary text-white font-bold py-2 px-4 rounded"
         >

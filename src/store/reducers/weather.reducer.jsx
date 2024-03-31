@@ -26,6 +26,13 @@ export default function weatherReducer(state = initialState, action) {
         ...state,
         cities: action.payload,
       };
+    case "CLEAR_ITEMS":
+      return {
+        ...state,
+        cities: [],
+        cityWeather: null,
+        error: "",
+      };
     default:
       return state;
   }
