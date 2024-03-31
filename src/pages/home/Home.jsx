@@ -18,49 +18,50 @@ export function Home() {
     cordinate,
     handleCordinate,
     isLoading,
-    setIsLoading
+    setIsLoading,
   } = useFetchCities();
 
   const navigate = useNavigate();
 
-  return !isLoading && (
-    <Base>
-      <Header />
-      <div className="h-80 grid content-center justify-center	">
-        <Title />
-        {cordinate && (
-          <div className="mb-2 mt-2">
+  return (
+    !isLoading && (
+      <Base>
+        <Header />
+        <div className="h-80 grid content-center justify-center	">
+          <Title />
+
           <Button
             title={"Use My Location 📍"}
             onClick={() => {
               handleCordinate();
               navigate("/weather");
             }}
-            isShow={true}
+            isShow={cordinate ? true : false}
           />
+          <div className="mb-2 mt-2">
+            <FormSelect
+              isMulti={true}
+              isLoading={isLoading}
+              isSearchable={true}
+              value={cities}
+              options={cityJsonData ?? []}
+              onInputChange={(e) => setSearch(e)}
+              onChange={(e) => handleSetCities(e)}
+            />
           </div>
-        )}
-        <FormSelect
-          isMulti={true}
-          isLoading={isLoading}
-          isSearchable={true}
-          value={cities}
-          options={cityJsonData ?? []}
-          onInputChange={(e) => setSearch(e)}
-          onChange={(e) => handleSetCities(e)}
-        />
 
-        <Button
-          onClick={async () => {
-            setIsLoading(true);
-            setTimeout(() => {
-              navigate("/weather");
-            }, 1000);
-          }}
-          title={"Search"}
-          isShow={handleShow}
-        />
-      </div>
-    </Base>
+          <Button
+            onClick={async () => {
+              setIsLoading(true);
+              setTimeout(() => {
+                navigate("/weather");
+              }, 1000);
+            }}
+            title={"Search"}
+            isShow={handleShow}
+          />
+        </div>
+      </Base>
+    )
   );
 }
