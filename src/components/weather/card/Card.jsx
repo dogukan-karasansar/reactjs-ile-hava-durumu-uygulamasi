@@ -3,7 +3,6 @@ import moment from "moment";
 import { calculateCelsius } from '../../../utils/utilityHelpers';
 
 export const Card = ({ weather }) => {
-  console.log(weather);
   return (
     <>
       {/* header alanı */}

@@ -3,19 +3,19 @@ import { calculateCelsius } from "../../../utils/utilityHelpers";
 
 const renderList = (detail) => {
   return (
-    <li class="py-3 sm:py-3">
-      <div class="flex items-center">
-        <div class="flex-shrink-0">
+    <li className="py-3 sm:py-3">
+      <div className="flex items-center">
+        <div className="flex-shrink-0">
           <img
-            class="w-6 h-6 rounded-full"
+            className="w-6 h-6 rounded-full"
             src={`/weather/informations/${detail.key}.svg`}
             alt="Neil image"
           />
         </div>
-        <div class="flex-1 min-w-0 ms-4">
-          <p class="text-sm font-medium text-sixth truncat">{detail.label}</p>
+        <div className="flex-1 min-w-0 ms-4">
+          <p className="text-sm font-medium text-sixth truncat">{detail.label}</p>
         </div>
-        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
           {detail.value}
         </div>
       </div>
@@ -57,9 +57,9 @@ export const Information = ({ weather }) => {
     setDetails(details);
   }, []);
   return (
-    <div class="w-80 mt-2  p-2 rounded-lg shadow  bg-third">
-      <div class="flow-root">
-        <ul role="list" class="divide-y divide-gray-200 dark:divide-eighth">
+    <div className="w-80 mt-2  p-2 rounded-lg shadow  bg-third">
+      <div className="flow-root">
+        <ul role="list" className="divide-y divide-gray-200 dark:divide-eighth">
           {weatherDetails.map((detail) => renderList(detail))}
         </ul>
       </div>

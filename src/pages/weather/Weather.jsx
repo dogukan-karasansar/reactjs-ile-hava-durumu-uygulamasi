@@ -9,80 +9,6 @@ import { Button } from "../../components/forms/button/Button";
 export function Weather() {
   const { allWeathers } = useFetchWeathers();
   const navigate = useNavigate();
-  /*  const [weathers, setWeathers] = useState([
-    {
-      id: 1,
-      country: "TR",
-      city: "Istanbul",
-      date: "2021-09-01",
-      temperature: "25",
-      weather: "Rain",
-      description: "Light rain",
-      icon: "/weather/icons/10d.svg",
-      banner: "/weather/backgrounds/10d.png",
-      temp_min: "22",
-      temp_max: "28",
-      details: [
-        {
-          key: "termal_sensation",
-          value: "25ºc",
-          label: "Termal Sensation",
-        },
-        {
-          key: "propable_rain",
-          value: "80%",
-          label: "Probability of rain",
-        },
-        {
-          key: "wind_speed",
-          value: "2 km/h",
-          label: "Wind speed",
-        },
-        {
-          key: "air_humidity",
-          value: "80%",
-          label: "Air humidity",
-        },
-        {
-          key: "uv_index",
-          value: "5",
-          label: "UV index",
-        },
-      ],
-      five_day_forecast: [
-        {
-          day: "2021-09-01",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-02",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-03",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-04",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-05",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-      ],
-    },
-  ]); */
 
   const styles = (weather) => ({
     banner: {
@@ -91,7 +17,6 @@ export function Weather() {
     },
   });
 
-  console.log(allWeathers);
 
   return (
     <Base>
@@ -121,7 +46,7 @@ export function Weather() {
                   <Card weather={weather} />
                 </div>
                 <Information weather={weather} />
-                {/*  <Feature weather={weather} /> */}
+                 <Feature weather={weather} />
               </div>
             </div>
           </div>

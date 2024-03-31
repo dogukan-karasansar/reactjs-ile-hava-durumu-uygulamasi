@@ -12,7 +12,17 @@ export const fetchWeather = (city) => {
         process.env.REACT_APP_OPENWEATHER_API_URL +
           `/data/2.5/weather?q=${city.value}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
       );
-      
+
+      const { coord } = response.data;
+      const { lat, lon } = coord;
+
+      const forecast = await Api.get(
+        process.env.REACT_APP_OPENWEATHER_API_URL +
+          `/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+      );
+
+      response.data.five_day_forecast = forecast.data.list
+
       dispatch({
         type: Constants.GET_WEATHER,
         payload: response.data,
@@ -45,6 +55,26 @@ export const fetchCityJsonData = (query = "") => {
         type: Constants.GET_CITY_JSON_DATA,
         error: errorMessageHandle(error.status),
       });
+    }
+  };
+};
+
+export const fetchForeCast = (lat, long) => {
+  return async (dispatch) => {
+    try {
+      const response = await Api.get(
+        process.env.REACT_APP_OPENWEATHER_API_URL +
+          `/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+      );
+
+      return response.data;
+    } catch (error) {
+      dispatch({
+        type: Constants.GET_WEATHER,
+        error: errorMessageHandle(error.status),
+      });
+
+      return {};
     }
   };
 };
