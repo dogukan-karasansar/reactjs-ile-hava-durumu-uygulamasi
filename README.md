@@ -2,6 +2,38 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Description
+
+This project is simple React weather application that uses the OpenWeatherMap API to get the weather data for a given city.
+
+## Project Structure
+
+The project is structured as follows:
+
+- `src` - Contains the source code for the application
+  - `components` - Contains the React components for the application
+  - `hooks` - Contains the custom hooks for the application
+  - `store` - Contains the Redux store for the application
+  - `App.css` - Contains the CSS for the application
+  - `App.js` - Contains the main React component for the application
+  - `index.css` - Contains the CSS for the application
+  - `index.js` - Contains the entry point for the application
+
+## Project Dependencies
+
+The project uses the following dependencies:
+
+- `@reduxjs/toolkit` - Redux toolkit for state management
+- `axios` - Promise based HTTP client for the browser and node.js
+- `react-redux` - Official React bindings for Redux
+- `redux` - A predictable state container for JavaScript apps
+- `redux-thunk` - Thunk middleware for Redux
+- `react-router-dom` - DOM bindings for React Router
+- `react-select` - A flexible and beautiful Select Input control for ReactJS with multiselect, autocomplete, async and creatable support
+- `react-alert` - A simple and very customizable alert component for React
+- `dotenv` - Loads environment variables from a `.env` file into `process.env`
+- `tailwindcss` - A utility-first CSS framework for rapidly building custom designs
+
 ## Available Scripts
 
 In the project directory, you can run:
