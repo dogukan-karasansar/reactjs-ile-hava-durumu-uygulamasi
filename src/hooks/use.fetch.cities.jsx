@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCityJsonData, setCities } from "../store/actions/weather.action";
+import {
+  fetchCityJsonData,
+  setCities,
+  setCordinate,
+} from "../store/actions/weather.action";
 import { useEffect, useMemo, useState } from "react";
-import { useAlert } from 'react-alert'
+import { useAlert } from "react-alert";
+import { useLocation } from "../utils/location";
 
 export const useFetchCities = () => {
   const dispatch = useDispatch();
+  const cordinate = useLocation();
+
   const alert = useAlert();
 
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const { cityJsonData, cities, error } = useSelector((state) => state.weather);
 
   const handleShow = useMemo(() => {
@@ -24,10 +32,24 @@ export const useFetchCities = () => {
     }
   }, [error]);
 
+  useEffect(() => {
+    if(cordinate) {
+      setIsLoading(false);
+    }
+  }, [cordinate]);
+
   const handleSetCities = (cities) => {
     dispatch(setCities(cities));
   };
 
+  const handleCordinate = () => {
+    dispatch(
+      setCordinate({
+        lat: cordinate.latitude,
+        long: cordinate.longitude,
+      })
+    );
+  };
 
   return {
     search,
@@ -36,5 +58,9 @@ export const useFetchCities = () => {
     cities,
     handleShow,
     handleSetCities,
+    cordinate,
+    handleCordinate,
+    isLoading,
+    setIsLoading,
   };
 };

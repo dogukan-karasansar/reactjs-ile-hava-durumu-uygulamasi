@@ -5,14 +5,14 @@ import { useAlert } from "react-alert";
 
 export const useFetchWeathers = () => {
   const dispatch = useDispatch();
-  const { cities, cityWeather, error } = useSelector((state) => state.weather);
+  const { cities, cityWeather, error, cordinate } = useSelector((state) => state.weather);
   const [allWeathers, setAllWeathers] = useState([]);
   const alert = useAlert();
 
   const getWeatherFromCity = () => {
     if (cities.length === 0) return;
     cities.map(async (city) => {
-      dispatch(fetchWeather(city));
+      dispatch(fetchWeather({ city: city }));
     });
   };
 
@@ -26,6 +26,12 @@ export const useFetchWeathers = () => {
       alert.error(error);
     }
   }, [error]);
+
+  useEffect(() => {
+    if (cordinate) {
+      dispatch(fetchWeather({ lantude: cordinate.lat, lontude: cordinate.long }));
+    }
+  }, [cordinate]);
 
   useEffect(() => {
     if (cityWeather) {

@@ -5,22 +5,41 @@ import { Button } from "../../components/forms/button/Button";
 import { Header } from "../../components/header/header";
 
 import { useFetchCities } from "../../hooks/use.fetch.cities";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Home() {
-  const { setSearch, cityJsonData, cities, handleShow, handleSetCities } =
-    useFetchCities();
-
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    setSearch,
+    cityJsonData,
+    cities,
+    handleShow,
+    handleSetCities,
+    cordinate,
+    handleCordinate,
+    isLoading,
+    setIsLoading
+  } = useFetchCities();
 
   const navigate = useNavigate();
 
-  return (
+  return !isLoading && (
     <Base>
       <Header />
       <div className="h-80 grid content-center justify-center	">
         <Title />
+        {cordinate && (
+          <div className="mb-2 mt-2">
+          <Button
+            title={"Use My Location 📍"}
+            onClick={() => {
+              handleCordinate();
+              navigate("/weather");
+            }}
+            isShow={true}
+          />
+          </div>
+        )}
         <FormSelect
           isMulti={true}
           isLoading={isLoading}

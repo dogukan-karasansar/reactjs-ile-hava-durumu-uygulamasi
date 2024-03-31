@@ -4,6 +4,7 @@ const initialState = {
   cityWeather: null,
   cityJsonData: [],
   cities: [],
+  cordinate: null,
   error: "",
 };
 
@@ -26,11 +27,17 @@ export default function weatherReducer(state = initialState, action) {
         ...state,
         cities: action.payload,
       };
+    case Constants.SET_CORDINATE:
+      return {
+        ...state,
+        cordinate: action.payload,
+      };
     case "CLEAR_ITEMS":
       return {
         ...state,
         cities: [],
         cityWeather: null,
+        cordinate: null,
         error: "",
       };
     default:
