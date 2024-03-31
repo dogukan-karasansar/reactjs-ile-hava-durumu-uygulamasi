@@ -3,10 +3,13 @@ import { Card } from "../../components/weather/card/Card";
 import { Information } from "../../components/weather/information/Information";
 import { Feature } from "../../components/weather/feature/Feature";
 import { useFetchWeathers } from "../../hooks/use.fetch.weathers";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/forms/button/Button";
 
 export function Weather() {
   const { allWeathers } = useFetchWeathers();
- /*  const [weathers, setWeathers] = useState([
+  const navigate = useNavigate();
+  /*  const [weathers, setWeathers] = useState([
     {
       id: 1,
       country: "TR",
@@ -92,6 +95,17 @@ export function Weather() {
 
   return (
     <Base>
+      <div className="h-5 m-5">
+        <button
+          onClick={() => {
+            window.history.back();
+          }}
+          className="bg-secondary text-white font-bold py-2 px-4 rounded"
+        >
+          Back
+        </button>
+      </div>
+
       <div className={`grid grid-rows-${allWeathers?.length} gap-4`}>
         {allWeathers.map((weather, index) => (
           <div className=" h-svh grid">
@@ -107,7 +121,7 @@ export function Weather() {
                   <Card weather={weather} />
                 </div>
                 <Information weather={weather} />
-               {/*  <Feature weather={weather} /> */}
+                {/*  <Feature weather={weather} /> */}
               </div>
             </div>
           </div>
