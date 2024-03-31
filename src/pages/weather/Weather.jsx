@@ -34,7 +34,7 @@ export function Weather() {
 
       <div className={`grid grid-rows-${allWeathers?.length} gap-4`}>
         {allWeathers.map((weather, index) => (
-          <div className=" h-[105vh] grid">
+          <div className=" h-[100vh] grid">
             <div
               key={index}
               className="h-80 grid content-center justify-center"
