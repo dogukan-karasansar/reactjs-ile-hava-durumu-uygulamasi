@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
 import Base from "../../layouts/base";
 import { Card } from "../../components/weather/card/Card";
 import { Information } from "../../components/weather/information/Information";
 import { Feature } from "../../components/weather/feature/Feature";
+import { useFetchWeathers } from "../../hooks/use.fetch.weathers";
 
 export function Weather() {
-  const [weathers, setWeathers] = useState([
+  const { allWeathers } = useFetchWeathers();
+ /*  const [weathers, setWeathers] = useState([
     {
       id: 1,
       country: "TR",
@@ -78,19 +79,21 @@ export function Weather() {
         },
       ],
     },
-  ]);
+  ]); */
 
   const styles = (weather) => ({
     banner: {
-      background: `url(${weather.banner})`,
+      background: `url(/weather/backgrounds/${weather?.weather[0].icon}.png)`,
       backgroundSize: "cover",
     },
   });
 
+  console.log(allWeathers);
+
   return (
     <Base>
-      <div className={`grid grid-rows-${weathers.length} gap-4`}>
-        {weathers.map((weather, index) => (
+      <div className={`grid grid-rows-${allWeathers?.length} gap-4`}>
+        {allWeathers.map((weather, index) => (
           <div className=" h-svh grid">
             <div
               key={index}
@@ -104,7 +107,7 @@ export function Weather() {
                   <Card weather={weather} />
                 </div>
                 <Information weather={weather} />
-                <Feature weather={weather} />
+               {/*  <Feature weather={weather} /> */}
               </div>
             </div>
           </div>

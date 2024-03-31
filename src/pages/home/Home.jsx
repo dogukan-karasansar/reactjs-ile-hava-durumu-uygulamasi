@@ -4,17 +4,22 @@ import { FormSelect } from "../../components/forms/form-select/FormSelect";
 import { Button } from "../../components/forms/button/Button";
 import { Header } from "../../components/header/header";
 
-import { useFetchCities } from "../../hooks/fetch.cities";
+import { useFetchCities } from "../../hooks/use.fetch.cities";
+import { useState } from "react";
 
 export function Home() {
   const {
-    search,
     setSearch,
     cityJsonData,
     cities,
     handleShow,
     handleSetCities,
   } = useFetchCities();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  
+
 
   return (
     <Base>
@@ -23,7 +28,7 @@ export function Home() {
         <Title />
         <FormSelect
           isMulti={true}
-          isLoading={true}
+          isLoading={isLoading}
           isSearchable={true}
           value={cities}
           options={cityJsonData ?? []}
@@ -32,7 +37,11 @@ export function Home() {
         />
 
 
-        <Button title={"Search"} isShow={handleShow} />
+        <Button onClick={() => {
+          setTimeout(() => {
+            window.location.href = '/weather';
+          }, 1000)
+        }} title={"Search"} isShow={handleShow} path={'/weather'} />
       </div>
     </Base>
   );

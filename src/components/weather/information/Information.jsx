@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { calculateCelsius } from "../../../utils/utilityHelpers";
+
 const renderList = (detail) => {
   return (
     <li class="py-3 sm:py-3">
@@ -21,11 +24,43 @@ const renderList = (detail) => {
 };
 
 export const Information = ({ weather }) => {
+  const [weatherDetails, setDetails] = useState([]);
+
+  useEffect(() => {
+    var details = [
+      {
+        key: "termal_sensation",
+        value: calculateCelsius(weather?.main.feels_like) + "ºc",
+        label: "Termal Sensation",
+      },
+      {
+        key: "propable_rain",
+        value: "80%",
+        label: "Probability of rain",
+      },
+      {
+        key: "wind_speed",
+        value: weather?.wind.speed + " km/h",
+        label: "Wind speed",
+      },
+      {
+        key: "air_humidity",
+        value: "80%",
+        label: "Air humidity",
+      },
+      {
+        key: "uv_index",
+        value: "5",
+        label: "UV index",
+      },
+    ];
+    setDetails(details);
+  }, []);
   return (
     <div class="w-80 mt-2  p-2 rounded-lg shadow  bg-third">
       <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-eighth">
-          {weather.details.map((detail) => renderList(detail))}
+          {weatherDetails.map((detail) => renderList(detail))}
         </ul>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import * as Constants from "../constants";
 
 const initialState = {
-  weather: [],
+  cityWeather: null,
   cityJsonData: [],
   cities: [],
   error: "",
@@ -12,7 +12,7 @@ export default function weatherReducer(state = initialState, action) {
     case Constants.GET_WEATHER:
       return {
         ...state,
-        weather: action.payload,
+        cityWeather: action.payload,
         error: action.error,
       };
     case Constants.GET_CITY_JSON_DATA:

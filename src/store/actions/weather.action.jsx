@@ -5,7 +5,26 @@ import {
 } from "../../utils/utilityHelpers";
 import Api from "../../utils/api";
 
-export const fetchWeather = (city) => {};
+export const fetchWeather = (city) => {
+  return async (dispatch) => {
+    try {
+      const response = await Api.get(
+        process.env.REACT_APP_OPENWEATHER_API_URL +
+          `/data/2.5/weather?q=${city.value}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+      );
+      
+      dispatch({
+        type: Constants.GET_WEATHER,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: Constants.GET_WEATHER,
+        error: errorMessageHandle(error.status),
+      });
+    }
+  };
+};
 
 export const fetchCityJsonData = (query = "") => {
   return async (dispatch) => {

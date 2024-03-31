@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCityJsonData, setCities } from "../store/actions/weather.action";
 import { useEffect, useMemo, useState } from "react";
+import { useAlert } from 'react-alert'
 
 export const useFetchCities = () => {
   const dispatch = useDispatch();
+  const alert = useAlert();
+
   const [search, setSearch] = useState("");
-  const { cityJsonData, cities } = useSelector((state) => state.weather);
+  const { cityJsonData, cities, error } = useSelector((state) => state.weather);
 
   const handleShow = useMemo(() => {
     return cities.length > 0;
@@ -15,9 +18,16 @@ export const useFetchCities = () => {
     dispatch(fetchCityJsonData(search));
   }, [search]);
 
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+    }
+  }, [error]);
+
   const handleSetCities = (cities) => {
     dispatch(setCities(cities));
   };
+
 
   return {
     search,

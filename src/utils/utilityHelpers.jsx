@@ -38,3 +38,7 @@ export const selectOptionsFormatter = async (data) => {
 
   return options;
 };
+
+export const calculateCelsius = (kelvin) => {
+  return Math.round(kelvin - 273.15);
+};
