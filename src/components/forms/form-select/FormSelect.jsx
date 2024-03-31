@@ -6,10 +6,11 @@ const customStyles = {
     ...styles,
     backgroundColor: "var(--fourth-color)",
     borderRadius: "0.375rem",
-    height: "3.2rem",
     color: "white",
     border: "none",
     boxShadow: "none",
+    margin: "16",
+    padding: "0.75rem",
     "&:hover": {
       border: "none",
     },
@@ -71,17 +72,19 @@ const customStyles = {
 
 export const FormSelect = ({ ...props }) => {
   return (
-    <AsyncSelect
-      cacheOptions
-      defaultOptions
-      placeholder={<div>{props.placeholder ?? "Seach location"}</div>}
-      styles={customStyles}
-      components={{
-        DropdownIndicator: () => null,
-        IndicatorSeparator: () => null,
-      }}
-      options={props.options || []}
-      {...props}
-    />
+    <div className="form-select w-80">
+      <AsyncSelect
+        cacheOptions
+        defaultOptions
+        placeholder={<div>{props.placeholder ?? "Seach location"}</div>}
+        styles={customStyles}
+        components={{
+          DropdownIndicator: () => null,
+          IndicatorSeparator: () => null,
+        }}
+        options={props.options || []}
+        {...props}
+      />
+    </div>
   );
 };
