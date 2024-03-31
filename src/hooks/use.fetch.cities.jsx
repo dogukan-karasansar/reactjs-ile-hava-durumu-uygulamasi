@@ -32,13 +32,28 @@ export const useFetchCities = () => {
     }
   }, [error]);
 
-
   useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (result) {
+          if (result.state === "granted") {
+            console.log(result.state);
+          } else if (result.state === "prompt") {
+            console.log(result.state);
+          } else if (result.state === "denied") {
+          }
+          result.onchange = function () {
+            console.log(result.state);
+          };
+        });
+    } else {
+      alert.error("Geolocation is not supported by this browser.");
+    }
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
   }, []);
-
 
   const handleSetCities = (cities) => {
     dispatch(setCities(cities));
