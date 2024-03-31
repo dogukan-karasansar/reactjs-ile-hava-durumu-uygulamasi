@@ -6,20 +6,15 @@ import { Header } from "../../components/header/header";
 
 import { useFetchCities } from "../../hooks/use.fetch.cities";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
-  const {
-    setSearch,
-    cityJsonData,
-    cities,
-    handleShow,
-    handleSetCities,
-  } = useFetchCities();
+  const { setSearch, cityJsonData, cities, handleShow, handleSetCities } =
+    useFetchCities();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  
-
+  const navigate = useNavigate();
 
   return (
     <Base>
@@ -36,12 +31,16 @@ export function Home() {
           onChange={(e) => handleSetCities(e)}
         />
 
-
-        <Button onClick={() => {
-          setTimeout(() => {
-            window.location.href = '/weather';
-          }, 1000)
-        }} title={"Search"} isShow={handleShow} path={'/weather'} />
+        <Button
+          onClick={async () => {
+            setIsLoading(true);
+            setTimeout(() => {
+              navigate("/weather");
+            }, 1000);
+          }}
+          title={"Search"}
+          isShow={handleShow}
+        />
       </div>
     </Base>
   );
