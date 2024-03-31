@@ -32,19 +32,6 @@ export const useFetchCities = () => {
     }
   }, [error]);
 
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
-
-  useEffect(() => {
-    if(cordinate) {
-      setIsLoading(false);
-    }
-  }, [cordinate]);
-
   const handleSetCities = (cities) => {
     dispatch(setCities(cities));
   };
