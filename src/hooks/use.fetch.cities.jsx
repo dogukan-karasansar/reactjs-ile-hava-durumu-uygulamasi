@@ -50,9 +50,7 @@ export const useFetchCities = () => {
     } else {
       alert.error("Geolocation is not supported by this browser.");
     }
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    setIsLoading(false);
   }, []);
 
   const handleSetCities = (cities) => {
