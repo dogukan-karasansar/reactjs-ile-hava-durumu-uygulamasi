@@ -38,13 +38,10 @@ export const useFetchCities = () => {
         .query({ name: "geolocation" })
         .then(function (result) {
           if (result.state === "granted") {
-            console.log(result.state);
           } else if (result.state === "prompt") {
-            console.log(result.state);
           } else if (result.state === "denied") {
           }
           result.onchange = function () {
-            console.log(result.state);
           };
         });
     } else {

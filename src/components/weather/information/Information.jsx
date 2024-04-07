@@ -29,7 +29,6 @@ export const Information = ({ weather }) => {
   const [weatherDetails, setDetails] = useState([]);
 
   useEffect(() => {
-    console.log(weather);
     var details = [
       {
         key: "termal_sensation",

@@ -6,7 +6,6 @@ import {
 import Api from "../../utils/api";
 
 export const fetchWeather = ({ city, lantude = null, lontude = null }) => {
-  console.log(city);
   return async (dispatch) => {
     try {
       var params = "";
