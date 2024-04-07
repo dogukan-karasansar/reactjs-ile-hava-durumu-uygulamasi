@@ -2,9 +2,9 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { calculateCelsius } from "../../../utils/utilityHelpers";
 
-const renderFeature = (forecast) => {
+const renderFeature = (forecast, index) => {
   return (
-    <div className="flex flex-col items-center m-2">
+    <div key={index} className="flex flex-col items-center m-2">
       <p className="text-sm font-medium text-sixth">
         {moment(forecast.dt_txt).format("ddd")}
       </p>
@@ -49,45 +49,10 @@ export const Feature = ({ weather }) => {
     setFeatures(features);
   }, [weather]);
 
-  /* 
-   five_day_forecast: [
-        {
-          day: "2021-09-01",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-02",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-03",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-04",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-        {
-          day: "2021-09-05",
-          min: "22",
-          max: "28",
-          icon: "/weather/icons/10d.svg",
-        },
-      ],
-  
-  */
   return (
     <div className="w-80 h-auto mt-2  p-2 rounded-lg shadow bg-third">
       <div className="grid grid-cols-5 gap-4">
-        {features.map((forecast) => renderFeature(forecast))}
+        {features.map((forecast, index) => renderFeature(forecast, index))}
       </div>
     </div>
   );

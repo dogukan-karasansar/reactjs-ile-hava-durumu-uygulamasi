@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { calculateCelsius } from "../../../utils/utilityHelpers";
 
-const renderList = (detail) => {
+const renderList = (detail, index) => {
   return (
-    <li className="py-3 sm:py-3">
+    <li key={index} className="py-3 sm:py-3">
       <div className="flex items-center">
         <div className="flex-shrink-0">
           <img
@@ -62,7 +62,7 @@ export const Information = ({ weather }) => {
     <div className="w-80 mt-2  p-2 rounded-lg shadow  bg-third">
       <div className="flow-root">
         <ul role="list" className="divide-y divide-gray-200 dark:divide-eighth">
-          {weatherDetails.map((detail) => renderList(detail))}
+          {weatherDetails.map((detail, index) => renderList(detail, index))}
         </ul>
       </div>
     </div>

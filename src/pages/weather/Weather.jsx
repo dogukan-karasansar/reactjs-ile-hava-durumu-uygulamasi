@@ -25,19 +25,19 @@ export function Weather() {
             clearItems();
             navigate("/");
           }}
-          class=" w-50 flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white rounded-lg gap-x-2 sm:w-auto dark:hover:bg-secondary dark:bg-secondary hover:bg-gray-100 dark:text-gray-200"
+          className=" w-50 flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white rounded-lg gap-x-2 sm:w-auto dark:hover:bg-secondary dark:bg-secondary hover:bg-gray-100 dark:text-gray-200"
         >
           <svg
-            class="w-5 h-5 rtl:rotate-180"
+            className="w-5 h-5 rtl:rotate-180"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
             />
           </svg>
@@ -47,7 +47,7 @@ export function Weather() {
 
       <div className={`grid grid-rows-${allWeathers?.length} gap-4`}>
         {allWeathers.map((weather, index) => (
-          <div className=" h-[100vh] grid">
+          <div key={index} className=" h-[100vh] grid">
             <div
               key={index}
               className="h-80 grid content-center justify-center"
