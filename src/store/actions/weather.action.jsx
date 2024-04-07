@@ -5,16 +5,24 @@ import {
 } from "../../utils/utilityHelpers";
 import Api from "../../utils/api";
 
+const paramGenerator = (params) => {
+  let param = "";
+
+  for (const key in params) {
+    param += `${key}=${params[key]}&`;
+  }
+
+  return param;
+};
+
 export const fetchWeather = ({ city, lantude = null, lontude = null }) => {
   return async (dispatch) => {
     try {
-      var params = "";
-      
-      if (lantude && lontude) {
-        params = `lat=${lantude}&lon=${lontude}`;
-      } else {
-        params = `q=${city.value}`;
-      }
+      const params = paramGenerator({
+        q: city.value,
+        lat: lantude,
+        lon: lontude,
+      });
 
       const response = await Api.get(
         process.env.REACT_APP_OPENWEATHER_API_URL +

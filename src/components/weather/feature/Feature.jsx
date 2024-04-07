@@ -23,6 +23,20 @@ const renderFeature = (forecast, index) => {
   );
 };
 
+const forecastPartOfDay = (features) => {
+  return features.reduce((acc, forecast) => {
+    const index = acc.findIndex((f) => f.dt_txt === forecast.dt_txt);
+    if (index === -1) {
+      acc.push(forecast);
+    } else {
+      if (forecast.main.temp_max > acc[index].main.temp_max) {
+        acc[index] = forecast;
+      }
+    }
+    return acc;
+  }, []);
+};
+
 export const Feature = ({ weather }) => {
   const [features, setFeatures] = useState([]);
 
@@ -32,21 +46,7 @@ export const Feature = ({ weather }) => {
       return forecast;
     });
 
-    features = features
-      .reduce((acc, forecast) => {
-        const index = acc.findIndex((f) => f.dt_txt === forecast.dt_txt);
-        if (index === -1) {
-          acc.push(forecast);
-        } else {
-          if (forecast.main.temp_max > acc[index].main.temp_max) {
-            acc[index] = forecast;
-          }
-        }
-        return acc;
-      }, [])
-      .slice(0, -1);
-
-    setFeatures(features);
+    setFeatures(forecastPartOfDay(features));
   }, [weather]);
 
   return (
