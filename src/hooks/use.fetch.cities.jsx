@@ -7,8 +7,10 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { useAlert } from "react-alert";
 import { useLocation } from "../utils/location";
+import { useNavigate } from "react-router-dom";
 
 export const useFetchCities = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cordinate = useLocation();
 
@@ -41,8 +43,7 @@ export const useFetchCities = () => {
           } else if (result.state === "prompt") {
           } else if (result.state === "denied") {
           }
-          result.onchange = function () {
-          };
+          result.onchange = function () {};
         });
     } else {
       alert.error("Geolocation is not supported by this browser.");
@@ -63,6 +64,13 @@ export const useFetchCities = () => {
     );
   };
 
+  const styles = (weather) => ({
+    banner: {
+      background: `url(/weather/backgrounds/${weather?.weather[0].icon}.png)`,
+      backgroundSize: "cover",
+    },
+  });
+
   return {
     search,
     setSearch,
@@ -74,5 +82,7 @@ export const useFetchCities = () => {
     handleCordinate,
     isLoading,
     setIsLoading,
+    styles,
+    navigate,
   };
 };

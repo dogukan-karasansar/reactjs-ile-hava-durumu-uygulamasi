@@ -7,15 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/forms/button/Button";
 
 export function Weather() {
-  const { allWeathers, clearItems } = useFetchWeathers();
-  const navigate = useNavigate();
-
-  const styles = (weather) => ({
-    banner: {
-      background: `url(/weather/backgrounds/${weather?.weather[0].icon}.png)`,
-      backgroundSize: "cover",
-    },
-  });
+  const { allWeathers, clearItems, styles, navigate } = useFetchWeathers();
 
   return (
     <Base>
